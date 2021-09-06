@@ -28,7 +28,7 @@ class Result extends Sports implements Student
         System.out.println("Academic Mark:"+mark);
     }
 }
-class Studentdet
+class studentsports
  {
     public static void main(String args[])
     {
