@@ -1,70 +1,30 @@
-import java.util.*;
-class Sort
-{
-    Scanner sc=new Scanner(System.in);
-    private static int n;
-    private String a[];
-
-    void read() {
-       System.out.println("Enter the limit:");
-       n = sc.nextInt();
-       a = new String[n];
-        System.out.println("Enter some strings:");
-        for(int i=0;i<n;i++)
-        {
-            a[i]= sc.next();
-        }
-    }
-    void sorts()
-    {
-        for(int i=0;i<n-1;i++)
-        {
-            for(int j=i+1;j<a.length;j++)
-            {
-                if(a[i].compareTo(a[j])>0)
-                {
-                    String temp=a[i];
-                    a[i]=a[j];
-                    a[j]=temp;
-                }
-            }
-        }
-        System.out.println(Arrays.toString(a));
-    }
-
+import java.util.Arrays;
+public class Sort 
+{    
+   private static String[] strs = {"Athira", "Nimisha", "Paru", "Ammu", "Sangeetha", "Bhavya", "Reshma", "Sruthy", "Ponnu"};
+    
+    public enum sort_asc_dsc{
+       ASC, DESC
+   }
+    
+       public static void main(String[] args) {
+       System.out.println("\nOriginal unsorted order: " + Arrays.toString(strs));
+       sort_array_by_length(strs, sort_asc_dsc.ASC);
+	   System.out.println("\nSorted order (ascending order): " + Arrays.toString(strs)); 
+	   sort_array_by_length(strs, sort_asc_dsc.DESC);
+       System.out.println("\nSorted order (descending order): " + Arrays.toString(strs));
+                 
+   }
+   public static void sort_array_by_length(String[] strs, sort_asc_dsc direction) {
+       if (strs == null || direction == null || strs.length == 0) {
+           return;
+       }
+       if (direction.equals(sort_asc_dsc.ASC)) {
+           Arrays.sort(strs, (String str1, String str2)
+                   -> Integer.compare(str1.length(), str2.length()));
+       } else if (direction.equals(sort_asc_dsc.DESC)) {
+           Arrays.sort(strs, (String str1, String str2)
+                   -> (-1) * Integer.compare(str1.length(), str2.length()));
+       }
+   }
 }
-public class Main {
-    public static void main(String args[])
-    {
-        Sort s=new Sort();
-		s.read();
-        s.sorts();
-    }
-}
-
-
-
-/*
-
-**************************************************************************************************************
-
-
-OUTPUT
-
-
-C:\Users\hp\Desktop\program>javac sort.java
-
-C:\Users\hp\Desktop\program>java sort
-Enter the limit:
-4
-Enter some strings:
-Athira
-Anju
-Anu
-Ammu
-[Athira, Anu, Ammu, Anju]
-
-*/
-
-
-
